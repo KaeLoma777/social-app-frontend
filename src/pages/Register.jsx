@@ -12,14 +12,14 @@ function RegisterPage() {
     password: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit =async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
 
     try {
