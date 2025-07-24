@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { backendClient } from "../clients/backendClient";
-
 function FeedPage() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [posts, setPosts] = useState([]);
-
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -16,7 +14,6 @@ function FeedPage() {
             )}`,
           },
         });
-
         setPosts(res.data);
       } catch (error) {
         console.log(error);
@@ -24,7 +21,6 @@ function FeedPage() {
     };
     fetchPosts();
   }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -39,20 +35,16 @@ function FeedPage() {
           },
         },
       );
-
       console.log(res);
-
       setTitle("");
       setBody("");
     } catch (error) {
       console.error(error);
     }
   };
-
   return (
     <main>
       <h1>Feed Page</h1>
-
       <form onSubmit={handleSubmit}>
         <h2>What's in your mind?</h2>
         <label htmlFor="title" />
@@ -63,7 +55,6 @@ function FeedPage() {
           name="title"
           onChange={(e) => setTitle(e.target.value)}
         />
-
         <label htmlFor="body" />
         <input
           type="text"
@@ -72,10 +63,8 @@ function FeedPage() {
           value={body}
           onChange={(e) => setBody(e.target.value)}
         />
-
         <input type="submit" value="Post" />
       </form>
-
       <div>
         {posts.length > 0 && (
           <>
@@ -92,5 +81,4 @@ function FeedPage() {
     </main>
   );
 }
-
 export default FeedPage;
